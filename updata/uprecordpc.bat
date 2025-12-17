@@ -22,14 +22,7 @@ for /f "usebackq tokens=1,2 delims=|" %%A in ("%MAP%") do (
     set "IP=%%A"
     set "PCNAME=%%B"
 
-    rem ==== LOCAL LUÔN LÀ IP ====
     if exist "%SRC%\!IP!" (
-
-        echo =========================================
-        echo [POST] IP local: !IP!
-        echo [POST] Ten tren server: !PCNAME!
-
-        rem ==== SERVER DÙNG TÊN MÁY ====
         set "DEST=%SERVER%\!PCNAME!"
 
         if not exist "!DEST!" (
@@ -40,8 +33,6 @@ for /f "usebackq tokens=1,2 delims=|" %%A in ("%MAP%") do (
                 goto FAIL
             )
         )
-
-        rem ==== COPY TOÀN BỘ FOLDER NGÀY ====
         for /D %%D in ("%SRC%\!IP!\??-??-????") do (
             echo [POST] Dang gui %%~nxD
 
@@ -51,12 +42,10 @@ for /f "usebackq tokens=1,2 delims=|" %%A in ("%MAP%") do (
                 goto FAIL
             )
 
-            rem ==== COPY OK → XÓA FOLDER NGÀY ====
             echo [POST] Xoa local %%~nxD
             rd /S /Q "%%D"
         )
 
-        rem ==== NEU IP KHONG CON FOLDER CON → XOA IP ====
         dir "%SRC%\!IP!\??-??-????" /A:D >nul 2>&1
         if errorlevel 1 (
             echo [POST] Folder IP rong → Xoa %SRC%\!IP!

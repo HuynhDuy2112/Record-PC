@@ -64,7 +64,7 @@ if not exist "%UNC%" (
     )
 )
 
-:: Get data lên server & xóa ở user
+:: Post data lên server & xóa ở user
 for /D %%F in ("%BASEDIR%\??-??-????") do (
     echo [POST] Dang gui %%~nxF ...
 

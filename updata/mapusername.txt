@@ -1,4 +1,3 @@
-10.0.0.10|Dii_Test
 10.0.0.25|Win10_Test
 192.168.0.53|Quyết Chiến
 192.168.0.69|Thanh Phong
